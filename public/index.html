@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>股市情绪追踪面板</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>股市情绪追踪面板</h1>
+        <p>基于 Twitter（X）近期推文，监控市场风险偏好。</p>
+      </header>
+
+      <section class="controls card">
+        <label for="query">关键词（Twitter 查询语法）</label>
+        <div class="row">
+          <input id="query" type="text" value="(stock market OR $SPY OR $QQQ) lang:en -is:retweet" />
+          <button id="refreshBtn">立即刷新</button>
+        </div>
+        <small>默认每 60 秒自动刷新一次</small>
+      </section>
+
+      <section class="metrics">
+        <article class="card">
+          <h2>情绪指数</h2>
+          <p id="score" class="big">--</p>
+          <small id="source">数据源: --</small>
+        </article>
+        <article class="card">
+          <h2>情绪分布</h2>
+          <ul>
+            <li>看多：<span id="positive">0</span></li>
+            <li>中性：<span id="neutral">0</span></li>
+            <li>看空：<span id="negative">0</span></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h2>跟踪状态</h2>
+          <ul>
+            <li>样本数量：<span id="total">0</span></li>
+            <li>最近更新：<span id="updatedAt">--</span></li>
+            <li>市场状态：<span id="regime">--</span></li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="card">
+        <h2>最新推文样本</h2>
+        <div id="tweets" class="tweets"></div>
+      </section>
+    </main>
+    <script src="/app.js" defer></script>
+  </body>
+</html>
